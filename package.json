@@ -2,7 +2,7 @@
   "name": "brainmetive",
   "version": "0.0.0",
   "scripts": {
-    "deploy":"ng build && firebase deploy --only hosting",
+    "deploy": "ng build && firebase deploy --only hosting",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -19,6 +19,9 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "firebase": "^9.9.4",
+    "ng-recaptcha": "^10.0.0",
+    "ngx-captcha": "^12.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

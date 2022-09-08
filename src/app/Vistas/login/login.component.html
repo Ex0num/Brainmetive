@@ -1,1 +1,32 @@
-<p>login works!</p>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+    
+              <form class="card-body cardbody-color p-lg-5">
+
+                <!-- <img class="mb-4" src="../../../assets/joystick.ico" alt="" width="72" height="57"> -->
+                <h1 class="h3 mb-3 fw-normal" id="card-tittle">Inicie sesión</h1>
+        
+                <div class="mb-3">
+                    <input [(ngModel)]="mailIngresadoLogin" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="email" aria-describedby="emailHelp"placeholder="Mail">
+                </div>
+                <div class="mb-3">
+                    <input [(ngModel)]="passwordIngresadoLogin" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="password" placeholder="Contraseña">
+                </div>
+
+                <p color="dark" id="txtError" hidden>Mensaje de error</p>
+                <p color="dark" id="txtSatisfaccion" hidden>Mensaje de satisfaccion</p> 
+
+                <div class="text-center"><button (click)="loginAuthFirebase()" type="submit" class="btn btn-color px-5 mb-5 w-100">Ingresar</button></div>
+                    <div id="emailHelp" class="form-text text-center mb-2.5 text-dark">¿Sin cuenta? <a href="/register" class="text-dark fw-bold"> Regístrese aquí</a></div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+

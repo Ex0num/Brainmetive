@@ -4,11 +4,13 @@ import { ErrorComponent } from './Vistas/error/error.component';
 import { HomeComponent } from './Vistas/home/home.component';
 import { LoginComponent } from './Vistas/login/login.component';
 import { QuiensoyComponent } from './Vistas/quiensoy/quiensoy.component';
+import { RegisterComponent } from './Vistas/register/register.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'quiensoy',component:QuiensoyComponent},
   {path:'login',component:LoginComponent},
+  {path: 'register',component:RegisterComponent},
   {path: '', component:HomeComponent},
   {path: '**',component:ErrorComponent}
 ];
@@ -17,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

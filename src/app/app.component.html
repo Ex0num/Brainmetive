@@ -1,1 +1,34 @@
+<header class="p-3 text-bg-dark" id="header">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/home" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="/quiensoy" class="nav-link px-2 text-white">Quien soy</a></li>
+          <li><a href="/roomgames" class="nav-link px-2 text-white">Room games</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button (click)="navigateLogin()" type="button" class="btn btn-outline-light me-2" id="btnLogin">Ingresar</button>
+          <button (click)="navigateRegister()" type="button" class="btn btn-outline-light me-2" id="btnSignUp">Registrarse</button>
+        
+          <label hidden id="userMail-loged">UserExample@gmail.com</label>
+          <button (click)="logOut()" type="button" class="btn btn-outline-light me-2" id="btnLogout" hidden>Salir</button>
+        </div>
+      </div>
+    </div>
+</header>
+
 <router-outlet></router-outlet>
+
+<div class="a-example-divider"></div>
+    <div class="container" id="footer">
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3" id="ul-footer">
+            <li class="nav-item"><a href="/home" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="/quiensoy" class="nav-link px-2 text-muted">Quien soy</a></li>
+            <li class="nav-item"><a href="/roomgames" class="nav-link px-2 text-muted">Room games</a></li>
+          </ul>
+          <p class="text-center text-muted">&copy; Brainmetive</p>
+        </footer>
+</div>

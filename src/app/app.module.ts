@@ -7,6 +7,8 @@ import { LoginComponent } from './Vistas/login/login.component';
 import { HomeComponent } from './Vistas/home/home.component';
 import { QuiensoyComponent } from './Vistas/quiensoy/quiensoy.component';
 import { ErrorComponent } from './Vistas/error/error.component';
+import { RegisterComponent } from './Vistas/register/register.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ErrorComponent } from './Vistas/error/error.component';
     LoginComponent,
     HomeComponent,
     QuiensoyComponent,
+    RegisterComponent,
     ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

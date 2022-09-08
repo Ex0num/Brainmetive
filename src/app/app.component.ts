@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,7 +21,7 @@ const firebaseConfig = {
 };
 
 // // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
 
@@ -28,6 +30,89 @@ const firebaseConfig = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent 
+{
   title = 'Brainmetive';
+  
+
+  constructor(private router: Router, private route: ActivatedRoute)
+  {
+
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => 
+    {
+      if (user) 
+      {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+
+        //Si el usuario esta logeado
+        //..
+        let btnLogin = document.getElementById("btnLogin");
+        let btnRegister = document.getElementById("btnSignUp");
+
+        btnLogin?.setAttribute("hidden","true");
+        btnRegister?.setAttribute("hidden","true");
+
+        let btnLogOut = document.getElementById("btnLogout");
+        btnLogOut?.removeAttribute("hidden");
+
+        console.log("LOGEADO!!!");
+
+        let mailShower = document.getElementById("userMail-loged");
+        mailShower?.removeAttribute("hidden");
+
+        // ...
+      } else 
+      {
+        // User is signed out
+        // ...
+        //Si el usuario no esta logeado
+        //..
+        let btnLogin = document.getElementById("btnLogin");
+        let btnRegister = document.getElementById("btnSignUp");
+
+        btnLogin?.removeAttribute("hidden");
+        btnRegister?.removeAttribute("hidden");
+
+        let btnLogOut = document.getElementById("btnLogout");
+        btnLogOut?.setAttribute("hidden","true");
+
+        let mailShower = document.getElementById("userMail-loged");
+        mailShower?.setAttribute("hidden","true");
+
+        console.log("DESLOGEADO!!");
+      }
+    });
+
+  }
+
+  logOut()
+  {
+    const auth = getAuth();
+    signOut(auth).then(() => 
+    {
+      // Sign-out successful.
+      alert("Cierre de sesión satisfactorio. Vuelva prontosss!");
+      this.router.navigate(['/login']);
+
+    }).catch((error) => 
+    {
+      // An error happened.
+      alert(error);
+    });
+  }
+
+  navigateLogin()
+  {
+    this.router.navigate(["/login"],);
+  }
+
+  navigateRegister()
+  {
+    this.router.navigate(["/register"],);
+  }
+
 }
