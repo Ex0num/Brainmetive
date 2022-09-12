@@ -12,7 +12,11 @@
             
                     <div class="mb-3"><input [(ngModel)]="mailIngresadoRegister" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="email" aria-describedby="emailHelp"placeholder="Mail"></div>
                     <div class="mb-3"><input [(ngModel)]="passwordIngresadoRegister" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="password" placeholder="Contraseña"></div>
-                    <div class="text-center"><button (click)="registerAuthFirebase()" type="submit" class="btn btn-color px-5 mb-1 w-100">Ingresar</button></div>
+                    <div class="mb-3"><input [(ngModel)]="passwordIngresadoConfirmRegister" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="password-confirm" placeholder="Confirme contraseña"></div>
+                    
+                    <p color="dark" id="txtError" hidden>{{errorShowed}}</p>
+
+                    <div class="text-center"><button (click)="registerAuthFirebase()" type="submit" class="btn btn-color px-5 mb-1 w-100">Registrarse</button></div>
                 </form>
             </div>
           </div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // Import the functions you need from the SDKs you need
@@ -33,11 +34,10 @@ export const app = initializeApp(firebaseConfig);
 export class AppComponent 
 {
   title = 'Brainmetive';
-  
+  mailShowed:any = "UserExample@gmail.com";
 
   constructor(private router: Router, private route: ActivatedRoute)
   {
-
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => 
@@ -50,6 +50,8 @@ export class AppComponent
 
         //Si el usuario esta logeado
         //..
+
+        this.mailShowed = user.email;
         let btnLogin = document.getElementById("btnLogin");
         let btnRegister = document.getElementById("btnSignUp");
 

@@ -22,8 +22,14 @@ a{
   text-align: center;
 }
 
-.btn-color{
+.btn-color
+{
   background-color: #0e1c36;
   color: #fff;
+}
 
+#txtError
+{
+  text-align: center;
+  color: red;
 }

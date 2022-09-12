@@ -32,3 +32,9 @@ a{
   color: #fff;
   
 }
+
+#txtError
+{
+  text-align: center;
+  color: red;
+}
