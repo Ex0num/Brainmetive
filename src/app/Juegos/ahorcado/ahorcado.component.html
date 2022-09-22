@@ -1,0 +1,74 @@
+
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        
+        <div class="col-auto d-none d-lg-block" id="expositor-vidas">
+            <img class="bd-placeholder-img" width="300" height="300" id="img-0vidas" src="../../../assets/game-files/ahorcado-files/0vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-1vidas" src="../../../assets/game-files/ahorcado-files/1vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-2vidas" src="../../../assets/game-files/ahorcado-files/2vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-3vidas" src="../../../assets/game-files/ahorcado-files/3vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-4vidas" src="../../../assets/game-files/ahorcado-files/4vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-5vidas" src="../../../assets/game-files/ahorcado-files/5vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-6vidas" src="../../../assets/game-files/ahorcado-files/6vidas.png">
+            <img class="bd-placeholder-img" width="300" height="300" hidden id="img-lose-game" src="../../../assets/game-files/ahorcado-files/lose.png">
+        </div>
+
+        <div class="col p-4 d-flex flex-column position-static">
+            <div class="row p-4 d-flex flex-column position-static" id="expositor-adivinanza">{{palabraRandom}}</div> 
+        </div>
+
+        <div class="text-bg-dark" id="expositor-letras">
+
+            <div id="error-container">
+                <label id="error-login-message">No es posible jugar sin antes iniciar sesión. ¡Necesitamos identificarte!</label>
+            </div>
+            
+            <div class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="container-letras-probadas">
+                <div class="row-md-6 px-0" class="container-mini-text">
+                    <a id="text-letrasProbadas">{{stringLetrasProbadas}}</a>
+                </div>
+            </div>
+
+            <div class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="container-mensaje-temporal" hidden>
+                <div class="row-md-6 px-0" class="container-mini-text">
+                    <a id="text-mensaje">{{mensajeTemporal}}</a>
+                </div>
+            </div>
+
+            <div class="row p-4 d-flex flex-column position-static">  
+                <button href="#" class="btnMenu" id="btnComenzar" hidden (click)="comenzarJuego()">Comenzar</button> 
+            </div>
+            
+            <div class="keyboard-row">
+                <button href="#" data="Q" class="letra" (click)="letraClickeada('Q')">Q</button>
+                <button href="#" data="W" class="letra" (click)="letraClickeada('W')">W</button>
+                <button href="#" data="E" class="letra" (click)="letraClickeada('E')">E</button>
+                <button href="#" data="R" class="letra" (click)="letraClickeada('R')">R</button>
+                <button href="#" data="T" class="letra" (click)="letraClickeada('T')">T</button>
+                <button href="#" data="Y" class="letra" (click)="letraClickeada('Y')">Y</button>
+                <button href="#" data="U" class="letra" (click)="letraClickeada('U')">U</button>
+                <button href="#" data="I" class="letra" (click)="letraClickeada('I')">I</button>
+                <button href="#" data="O" class="letra" (click)="letraClickeada('O')">O</button>
+                <button href="#" data="P" class="letra" (click)="letraClickeada('P')">P</button>
+            </div>
+            <div class="keyboard-row">
+                <button href="#" data="A" class="letra" (click)="letraClickeada('A')">A</button>
+                <button href="#" data="S" class="letra" (click)="letraClickeada('S')">S</button>
+                <button href="#" data="D" class="letra" (click)="letraClickeada('D')">D</button>
+                <button href="#" data="F" class="letra" (click)="letraClickeada('F')">F</button>
+                <button href="#" data="G" class="letra" (click)="letraClickeada('G')">G</button>
+                <button href="#" data="H" class="letra" (click)="letraClickeada('H')">H</button>
+                <button href="#" data="J" class="letra" (click)="letraClickeada('J')">J</button>
+                <button href="#" data="K" class="letra" (click)="letraClickeada('K')">K</button>
+                <button href="#" data="L" class="letra" (click)="letraClickeada('L')">L</button>
+                <button href="#" data="Ñ" class="letra" (click)="letraClickeada('Ñ')">Ñ</button>
+            </div>
+            <div class="keyboard-row">
+                <button href="#" data="Z" class="letra" (click)="letraClickeada('Z')">Z</button>
+                <button href="#" data="X" class="letra" (click)="letraClickeada('X')">X</button>
+                <button href="#" data="C" class="letra" (click)="letraClickeada('C')">C</button>
+                <button href="#" data="V" class="letra" (click)="letraClickeada('V')">V</button>
+                <button href="#" data="B" class="letra" (click)="letraClickeada('B')">B</button>
+                <button href="#" data="N" class="letra" (click)="letraClickeada('N')">N</button>
+                <button href="#" data="M" class="letra" (click)="letraClickeada('M')">M</button>
+            </div>
+        </div>

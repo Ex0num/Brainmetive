@@ -18,7 +18,8 @@ const firebaseConfig = {
   storageBucket: "tp-labo-iv.appspot.com",
   messagingSenderId: "1005341932224",
   appId: "1:1005341932224:web:99d7755337c19e67078b25",
-  measurementId: "G-0BGDLY9F1S"
+  measurementId: "G-0BGDLY9F1S",
+  databaseURL: "https://tp-labo-iv-default-rtdb.firebaseio.com/",
 };
 
 // // Initialize Firebase
@@ -97,13 +98,13 @@ export class AppComponent
     signOut(auth).then(() => 
     {
       // Sign-out successful.
-      alert("Cierre de sesión satisfactorio. Vuelva prontosss!");
+      console.log("Cierre de sesión satisfactorio. Vuelva prontosss!");
       this.router.navigate(['/login']);
 
     }).catch((error) => 
     {
       // An error happened.
-      alert(error);
+      console.log(error);
     });
   }
 

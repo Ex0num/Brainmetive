@@ -1,0 +1,23 @@
+<main class="container" id="chat-main-container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+      <div class="row-md-6 px-0" id="chat-header-text-container">
+        <h1 class="display-4 fst-italic">¡Bienvenido/a {{usuario}} al chat de Brainmetive!</h1>
+        <p class="lead my-3">Contamos con un nuevo chat ¡en vivo!. <br> Por favor. Demás está pedir que 
+        se mantenga el respeto entre los usuarios... <br> Tratemos de evitar temas políticos, religiosos y futbolísticos. <br> 
+        ¡Que lo disfrutes!</p>
+      </div>
+
+      <div id="error-container">
+        <label id="error-login-message">No es posible utilizar el chat sin antes iniciar sesión. ¡Necesitamos identificarte!</label>
+      </div>
+      
+      <div class="row-md-6 px-0" id="chat-container">
+        <ul id="chat-messages"></ul>
+      </div>
+
+      <input [(ngModel)]="mensaje" [ngModelOptions]="{standalone: true}" type="text" placeholder="Escribí tu mensaje acá..." id="chat-input">
+      <button id="send-button" (click)="sendMessage()">Enviar</button>
+
+    </div>
+</main>
+  

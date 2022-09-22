@@ -1,0 +1,102 @@
+.bd-placeholder-img
+{
+    padding: 1rem;
+}
+
+#letras{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+#expositor-letras
+{
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#expositor-adivinanza
+{
+    margin-top: 4rem;
+    font-size: 80px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+}
+
+#expositor-vidas
+{
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+    align-self: center;
+    margin-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#error-container
+{
+    text-align: center;
+}
+
+#error-login-message
+{
+    border: 1px solid white;
+    border-radius: 10px;
+
+    color: #d25a5a;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#text-mensaje, #text-letrasProbadas
+{
+    height: min-content;
+    padding: 0.3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.container-mini-text
+{
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 2rem;
+}
+
+.btnMenu
+{
+    align-self: center;
+    width: 30%;
+    height: 2rem;
+    font-size: 20px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.letra
+{
+    width: 3rem;
+    height: 3rem;
+    font-size: 25px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}

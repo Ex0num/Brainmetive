@@ -1,0 +1,78 @@
+#chat-main-container
+{
+    margin-top: 2rem;
+}
+
+#chat-header-text-container
+{
+    text-align: center;
+}
+
+#error-login-message
+{
+    border: 1px solid white;
+    border-radius: 10px;
+
+    color: #d25a5a;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#error-container
+{
+    text-align: center;
+}
+
+#chat-container
+{
+    margin-top: 2rem;
+    border: 1px solid white;
+    height: 25rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#box-messages
+{
+    height: 86.9%;
+    list-style-type: none;
+}
+
+#chat-messages
+{
+    list-style: none;
+    display: list-item;
+    justify-content: right;
+    align-items: center;
+}
+
+#chat-input
+{
+    width: 100%;
+    text-align: center;
+    font-size: 19px;
+}
+
+#send-button
+{
+    margin-top: 1px;
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: uppercase;
+}
+
+.ownMessage
+{
+    text-align: right;
+    background-color: #d25a5a;
+}
+

@@ -1,0 +1,54 @@
+
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        
+        <div class="col-auto d-none d-lg-block" id="expositor-cartas">
+            <img class="bd-placeholder-img" width="260" height="350" id="img-card-dorso-static" src="../../../assets/game-files/mayor-o-menor-files/cartas/dorso.PNG">
+        </div>
+
+        <div class="col p-4 d-flex flex-column position-static">
+            <img class="bd-placeholder-img" width="260" height="350" id="img-card-dorso" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/dorso.PNG">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card1" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-1.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card2" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-2.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card3" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-3.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card4" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-4.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card5" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-5.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card6" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-6.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card7" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-7.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card8" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-8.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card9" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-9.png">
+            <img class="bd-placeholder-img" width="300" height="400" id="img-card10" hidden src="../../../assets/game-files/mayor-o-menor-files/cartas/card-10.png">
+        </div>
+
+        <div class="text-bg-dark" id="expositor-menu">
+
+            <div id="error-container">
+                <label id="error-login-message">No es posible jugar sin antes iniciar sesión. ¡Necesitamos identificarte!</label>
+            </div>
+
+            <div class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="container-letras-probadas">
+                <div class="row-md-6 px-0" class="container-mini-text">
+                    <a id="text-letrasProbadas">{{stringNumerosProbados}}</a>
+                </div>
+
+                <div id="error-container">
+                    <label id="text-letrasProbadas">Tu puntuación: {{puntaje}}</label>
+                    <br>
+                    <label id="text-letrasProbadas">Tus vidas: {{vidas}}</label>
+                </div>
+            </div>
+
+            <div class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="container-mensaje-temporal" hidden>
+                <div class="row-md-6 px-0" class="container-mini-text">
+                    <a id="text-mensaje">{{mensajeTemporal}}</a>
+                </div>
+            </div>
+
+            <div class="row p-4 d-flex flex-column position-static">  
+                <button id="btnComenzar" class="btnMenu" (click)="comenzarJuego()" hidden>Comenzar</button>
+            </div>
+            <div class="keyboard-row">
+                <button id="btnMayor" class="btnMenu" (click)="esMayor()" hidden>Mayor</button>
+                <button id="btnMenor" class="btnMenu" (click)="esMenor()" hidden>Menor</button>
+            </div>
+        </div>
+      </div>

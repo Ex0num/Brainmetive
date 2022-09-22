@@ -48,7 +48,7 @@ export class LoginComponent{
     signInWithEmailAndPassword(auth, this.mailIngresadoLogin, this.passwordIngresadoLogin).then(async (userCredential) =>
      {
 
-      alert("El inicio de sesión fue satisfactorio. Bienvenido/a.");
+      console.log("El inicio de sesión fue satisfactorio. Bienvenido/a.");
       // this.mostrarSatisfaccion("El inicio de sesión fue satisfactorio. Bienvenido/a.");
 
         // Signed in

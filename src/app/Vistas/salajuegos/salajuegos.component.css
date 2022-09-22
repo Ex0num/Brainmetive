@@ -1,0 +1,64 @@
+#col-md-5
+{
+    text-align: right;
+    margin-top: 4px;
+}
+
+#utn-row
+{
+    margin-right: 3rem;
+    margin-left: 3rem;
+    margin-top: 2.2rem;
+}
+
+p
+{
+    margin-top: 1rem;
+}
+
+.link
+{
+    color: white;
+    font-weight: 600;
+}
+
+.link2
+{
+    color: black;
+    font-weight: 600;
+}
+
+#expositor-juegos
+{
+    margin-top: 3.1rem;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.card-text
+{
+    height: fit-content;
+}
+
+.bd-placeholder-img
+{
+    padding: 1rem;
+}
+
+/* ----------- SECCION VER MAS -------------------*/
+#ver-mas-container
+{
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 2rem;
+}
+
+#ver-mas-link
+{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}

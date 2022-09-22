@@ -9,6 +9,10 @@ import { QuiensoyComponent } from './Vistas/quiensoy/quiensoy.component';
 import { ErrorComponent } from './Vistas/error/error.component';
 import { RegisterComponent } from './Vistas/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { ChatComponent } from './Vistas/chat/chat.component';
+import { SalajuegosComponent } from './Vistas/salajuegos/salajuegos.component';
+import { AhorcadoComponent } from './Juegos/ahorcado/ahorcado.component';
+import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     QuiensoyComponent,
     RegisterComponent,
+    ChatComponent,
     ErrorComponent,
+    SalajuegosComponent,
+    AhorcadoComponent,
+    MayorOMenorComponent,
   ],
   imports: [
     BrowserModule,
