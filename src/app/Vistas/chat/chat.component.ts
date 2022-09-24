@@ -1,9 +1,6 @@
-import { Component, createComponent, OnInit } from '@angular/core';
-import { snapshotChanges } from '@angular/fire/compat/database';
+import { Component } from '@angular/core';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, set, onValue, onChildAdded, query} from "firebase/database";
-import { addDoc, collection, doc, getFirestore, onSnapshot, where } from 'firebase/firestore';
-import { map } from 'rxjs';
+import { collection, deleteDoc, doc, getDocs, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
 import { app } from 'src/app/app.component';
 import { Mensaje } from 'src/app/Entidades/mensaje';
 
@@ -57,6 +54,7 @@ export class ChatComponent
         //Le traigo los mensajes
         // this.updateMessages()
         // this.recievedMessage();
+        this.recieveChanges();
       } 
       else 
       {
@@ -73,204 +71,124 @@ export class ChatComponent
     });
 
   }
+  
+  private async getLastID()
+  {
+    let mensajesRef = collection(this.db, "Mensajes");
+    let querySnapshot = getDocs(mensajesRef);
+    let flagMax = 0;
+
+    (await ((querySnapshot))).docs.forEach((doc) => 
+    {
+      if (parseInt(doc.id) > flagMax)
+      {
+        flagMax = parseInt(doc.id);
+        console.log(flagMax);
+      }
+    });
+
+    return flagMax;
+  }
 
   public async sendMessage()
   {
       //--------------- Guardo al log en la DB ---------------------
       let mensajeEnviado = new Mensaje(this.usuario, this.mensaje);
-      // this.listaLogsDB.push(mensajeEnviado);
       //----------------------------------------------------------------
 
-      // Add a new document with a generated id. (TENGO EN "DocRef" la referencia a ese usuario si me hiciese falta)
-      const docRef = await addDoc(collection(this.db, "Mensajes"), 
+      this.flagOwnMessage = true;
+
+      let lastId = this.getLastID();
+      let newID = await lastId + 1;
+
+      // Add a new document in collection "cities"
+      await setDoc(doc(this.db, "Mensajes", newID.toString()), 
       {
         usuario: mensajeEnviado.username,
         texto: mensajeEnviado.texto,
         hora: mensajeEnviado.horaActual,
         fecha: mensajeEnviado.fechaActual,
       });
-      //-------------------------------------------------------------
+
+      this.mensaje = "";
   }
 
   public recieveChanges()
   {
-      // let docRef = doc(this.db, "Mensajes");
-      // onSnapshot(docRef, {includeMetadataChanges: true}, (doc) => 
-      // {
-      //   console.log("Current data: ", doc.data());
-      // });
+      let newLastID = 0;
 
-
-      // let col = collection(this.db, "Mensajes");
-      // let unsubscribe = onSnapshot(col ,(querySnapshot) => 
-      // {
-      //   let mensajes = new Array();
-
-      //   querySnapshot.forEach((doc) => 
-      //   {
-      //     mensajes.push(doc.data());
-      //   });
-
-      //   console.log("Current messages: ", mensajes.join(", "));
-      // });
-
-      const unsubscribe = onSnapshot(collection(this.db, "Mensajes"), () => 
+      const unsubscribe = onSnapshot(collection(this.db, "Mensajes"), async () => 
       {
-        // Respond to data
-        console.log("CHANGES DETECTED");
-        // ...
-      });
-      
-      // Later ...
+          // Respond to data
+          if (this.flagLoadingMessages == false)
+          {
+            console.log("CHANGES DETECTED");
 
+            if (this.flagOwnMessage == true)
+            {
+              console.log("CREANDO BUBBLE PROPIA");
+
+              let nuevoMensaje = new Mensaje(this.usuario,this.mensaje);
+              this.createOwnNewBubble(nuevoMensaje.texto,nuevoMensaje.username,nuevoMensaje.horaActual);
+            }
+            else
+            {
+              console.log("CREANDO BUBBLE AJENA");
+
+              let usuarioDetectado = "";
+              let textoDetectado = "";
+
+              let mensajesRef = collection(this.db, "Mensajes");
+              
+              let  lastID = this.getLastID();
+              newLastID = await lastID;
+
+              // let q = query(collection(this.db, "Mensajes"), orderBy("fechaActual", "desc"), limit(3));
+              // const querySnapshot = await getDocs(q);
+
+              let querySnapshot = getDocs(mensajesRef);
+
+              (await querySnapshot).docs.forEach((doc) => 
+              {
+                if (parseInt(doc.id) == newLastID)
+                {
+                  let data = doc.data();
+                  let mensajeNuevo = new Mensaje(data['usuario'],data['texto']);
+                  this.createNewBubble(mensajeNuevo.texto, mensajeNuevo.username, mensajeNuevo.horaActual);
+                }
+              });
+            }
+          }
+          else
+          {
+            console.log("LOADING MESSAGES");
+            this.flagLoadingMessages = false;
+          }
+
+          //Reestableces flag
+          this.flagOwnMessage = false;
+
+          if (newLastID >= 100)
+          {
+            this.limpiarMensajes();
+          }
+          
+      });
   }
 
-  // public sendMessage() 
-  // {
-  //   if (this.mensaje != null && this.mensaje != undefined && this.mensaje != "" && this.mensaje.length < 50)
-  //   {
+  private async limpiarMensajes() 
+  {
+    let mensajesRef = collection(this.db, "Mensajes");
+    let querySnapshot = getDocs(mensajesRef);
+    let flagMax = 0;
 
-  //     let horaActualCalculada = new Date();
+    (await ((querySnapshot))).docs.forEach((document) => 
+    {
+        deleteDoc(doc(this.db, "Mensajes", document.id));
+    });
 
-  //     let horaString = horaActualCalculada.toLocaleTimeString();
-  //     let fechaString = horaActualCalculada.toLocaleDateString();
-  
-  //     let fechaStringed = fechaString.replace("/","-");
-  //     fechaStringed = fechaStringed.replace("/","-");
-  
-  //     // set(ref(this.realTimeDB, 'mensajes/bubble' + "-" + this.usuarioID + "-(" + horaString + ")-(" + fechaStringed + ")"), 
-  //     // {
-  //     //   username: this.usuario,
-  //     //   texto: this.mensaje,
-  //     //   horaActual: horaString,
-  //     //   fechaActual: fechaString,
-  //     // });
-
-  //     // set(ref(this.realTimeDB, 'mensajes/bubble' + "-" + "(" + horaString + ")-(" + fechaStringed + ")"), 
-  //     // {
-  //     //   username: this.usuario,
-  //     //   texto: this.mensaje,
-  //     //   horaActual: horaString,
-  //     //   fechaActual: fechaString,
-  //     // });
-
-  //     set(ref(this.realTimeDB, 'mensajes/bubble' + '-' + this.usuarioID), 
-  //     {
-  //       username: this.usuario,
-  //       texto: this.mensaje,
-  //       horaActual: horaString,
-  //       fechaActual: fechaString,
-  //     });
-
-  //     console.log("");
-  //     console.log("OWN MESSAGE SEND");
-  //     this.createOwnNewBubble(this.mensaje, this.usuario, horaString);
-  //     console.log("");
-
-  //     // this.mensaje = "";
-  //     this.flagOwnMessage = true;
-  //   }
-  // }
-
-  // public recievedMessage()
-  // {
-  //   const messagesRef = ref(this.realTimeDB,"mensajes");
-
-  //   onValue(messagesRef, (snapshot) => 
-  //   {
-  //     if (this.flagLoadingMessages == true)
-  //     {
-  //         console.log("LOADING MESSAGES");
-  //         this.flagLoadingMessages = false;
-  //     } 
-  //     else
-  //     {
-  //       console.log("ON VALUE ACTIVATED");
-  //       console.log(snapshot.exists());
-        
-  //       console.log(snapshot.val());
-        
-  //       snapshot.forEach(element => 
-  //       {
-  //         console.log(element.child("mensajes/"));  
-  //       });
-  //       // snapshotChanges().pipe(map(x => console.log(x)));
-  //     }
-  //   });
-  // }
-
-  // onChildAdded(messagesRef,(data) => 
-  // {
-  //   console.log("ON CHILD ADDED ACTIVATED");
-  //   // console.log("");
-  //   // console.log("OTHER MESSAGE RECIEVED");
-  //   // this.createNewBubble(data.val().texto,data.val().username,data.val().horaActual);
-  //   // console.log(data.val());
-  // });
-
-  // public updateMessages()
-  // {
-  //   const messagesRef = ref(this.realTimeDB,"mensajes");
-
-  //   onValue(messagesRef, (snapshot) => 
-  //   {
-  //       if (this.flagLoadingMessages == false)
-  //       { 
-  //         if (this.flagOwnMessage == false)
-  //         {
-  //           console.log("");
-  //           console.log("CREANDO MENSAJE AJENO BUBBLE");
-
-  //           // this.createNewBubble(childData["texto"],childData["username"],childData["horaActual"]);
-  //           //Tengo que buscar la forma de crear la bubble con la informacion que posee la data del cambio
-            
-  //           console.log("LENGHT");
-  //           console.log(snapshot.size);
-  //           // console.log(snapshot.val().length);
-            
-  //           onChildAdded(messagesRef,(data) => 
-  //           {
-  //             console.log("");
-  //             console.log("CHILDREN ADDED");
-  //             this.createNewBubble(data.val().texto,data.val().username,data.val().horaActual);
-  //             console.log(data.val());
-  //           });
-
-  //           // for (let i = 0; i < snapshot.size; i++) 
-  //           // {
-  //           //   if (i - 1 == snapshot.size)
-  //           //   { 
-  //           //     const childData = snapshot.val();
-  //           //     console.log(childData);
-  //           //     this.createNewBubble(childData["texto"],childData["username"],childData["horaActual"]);
-  //           //   }
-  //           // }
-
-  //           // snapshot.forEach((childSnapshot) => 
-  //           // {
-  //           //   const childData = childSnapshot.val();
-  //           //   this.createNewBubble(childData["texto"],childData["username"],childData["horaActual"]);
-  //           //   // ...
-  //           // });
-  //         }
-  
-  //         this.flagOwnMessage = false;
-  //       }
-  //       else
-  //       {
-  //         this.flagLoadingMessages = false;
-  //       }        
-  //   });
-  // }
-
-  // public 
-  // onChildAdded(messagesRef,(data) => 
-  // {
-  //   console.log("");
-  //   console.log("CHILDREN ADDED");
-  //   // this.createNewBubble(data.val().texto,data.val().username,data.val().horaActual);
-  //   console.log(data.val());
-  // });
+    return flagMax;
+  }
 
   public createNewBubble(mensajeRecieved:string, usernameRecieved:string, horaActual:string)
   {
@@ -296,6 +214,7 @@ export class ChatComponent
     nuevoMensaje.appendChild(nuevaInfo);
     nuevoMensaje.appendChild(nuevoTexto);
     nuevoMensaje.setAttribute("class","othersMessage");
+    nuevoMensaje.className = 'othersMessage';
 
     console.log(nuevoMensaje);
     listaMensajes?.appendChild(nuevoMensaje);
@@ -319,6 +238,7 @@ export class ChatComponent
     nuevoMensaje.appendChild(nuevaInfo);
     nuevoMensaje.appendChild(nuevoTexto);
     nuevoMensaje.setAttribute("class","ownMessage");
+    nuevoMensaje.className = 'ownMessage';
 
     console.log(nuevoMensaje);
     listaMensajes?.appendChild(nuevoMensaje);

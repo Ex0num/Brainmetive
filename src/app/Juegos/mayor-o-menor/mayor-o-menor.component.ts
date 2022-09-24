@@ -106,7 +106,7 @@ export class MayorOMenorComponent
       if (this.numerosMostrados[lastItem] < numeroRandomGenerado)
       {
 
-        this.puntaje = this.puntaje + 100;
+        this.puntaje = this.puntaje + 1;
         this.mostrarMensajeTemporal("¡Bien!");
       }
       else
@@ -157,7 +157,7 @@ export class MayorOMenorComponent
       if (this.numerosMostrados[lastItem] > numeroRandomGenerado)
       {
 
-        this.puntaje = this.puntaje + 100;
+        this.puntaje = this.puntaje + 1;
         this.mostrarMensajeTemporal("¡Bien!");
       }
       else

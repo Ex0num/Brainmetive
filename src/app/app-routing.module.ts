@@ -2,6 +2,8 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AhorcadoComponent } from './Juegos/ahorcado/ahorcado.component';
 import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.component';
+import { PreguntadosComponent } from './Juegos/preguntados/preguntados.component';
+import { RelacionadosComponent } from './Juegos/relacionados/relacionados.component';
 import { ChatComponent } from './Vistas/chat/chat.component';
 import { ErrorComponent } from './Vistas/error/error.component';
 import { HomeComponent } from './Vistas/home/home.component';
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path: 'salajuegos',component:SalajuegosComponent},
   {path: 'juegos/ahorcado',component:AhorcadoComponent},
   {path: 'juegos/mayoromenor',component:MayorOMenorComponent},
+  {path: 'juegos/preguntados',component:PreguntadosComponent},
+  {path: 'juegos/relacionados',component:RelacionadosComponent},
   {path: '', component:HomeComponent},
   {path: '**',component:ErrorComponent}
 ];

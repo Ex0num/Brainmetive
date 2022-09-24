@@ -1,0 +1,86 @@
+<div class="p-4 p-md-5 mb-4 rounded text-bg-dark" id="container-main">
+    <div class="row mb-2" id="b">
+        <div class="row-md-6 px-0" id="main-tittle">
+            <h1 class="display-4 fst-italic">Dicen que una imagen vale más que mil palabras. <br> Veamos que tan cierto es.</h1>
+
+            <p class="lead my-3"> 
+                Intenta adivinar la palabras antes de que se acabe el tiempo. <strong> EsiImportante tener en cuenta <br> que
+                la cantidad de casilleros disponibles no define la plabra como tal. ¡Pueden haber más casilleros de los
+                necesitados! <br> Luego de varias pruebas, esta es medida de dificultad que se necesitaba.</strong> <br> ¿Qué esperas?
+                <a text-decoration="none" class="lead my-3" id="link" (click)="startTrivia()">¡Comenzar a adivinar!</a>
+                <br>
+                <label id="final-pts" hidden>Tu puntuación fue: {{puntaje}} pts.</label>
+            </p>
+
+            <div id="error-container">
+                <label id="error-login-message">No es posible jugar sin antes iniciar sesión. ¡Necesitamos identificarte!</label>
+            </div>
+
+            <form id="form-game" hidden>
+
+                <div class="row-md-6 px-0">
+                    <img src="https://source.unsplash.com/kSvpTrfhaiU" height="270px" width="30%" class="game-img" id="game-img-1">
+                    <img src="https://source.unsplash.com/kSvpTrfhaiU" height="270px" width="30%" class="game-img" id="game-img-2">
+                </div>
+
+                <label id="time-left">{{timeleft}} Segundos restantes...</label> 
+                <br>
+                <label id="label-correct" hidden>¡BIEN!</label>  
+                <label id="label-incorrect" hidden>¡MAL!</label>
+
+                <div class="row-md-6 px-0" id="game-casillero-container">
+                    <input id="casilla1" class="game-casillero" readonly value=" ">
+                    <input id="casilla2" class="game-casillero" readonly value=" ">
+                    <input id="casilla3" class="game-casillero" readonly value=" ">
+                    <input id="casilla4" class="game-casillero" readonly value=" ">
+                    <input id="casilla5" class="game-casillero" readonly value=" ">
+                    <input id="casilla6" class="game-casillero" readonly value=" ">
+                    <input id="casilla7" class="game-casillero" readonly value=" ">
+                    <input id="casilla8" class="game-casillero" readonly value=" ">
+                    <input id="casilla9" class="game-casillero" readonly value=" ">
+                    <input id="casilla10" class="game-casillero" readonly value=" ">
+                </div>
+
+                <div id="keyboard-container">
+                    <div class="keyboard-row">
+                        <button data="Q" class="letra" (click)="letraClickeada('Q')">Q</button>
+                        <button data="W" class="letra" (click)="letraClickeada('W')">W</button>
+                        <button data="E" class="letra" (click)="letraClickeada('E')">E</button>
+                        <button data="R" class="letra" (click)="letraClickeada('R')">R</button>
+                        <button data="T" class="letra" (click)="letraClickeada('T')">T</button>
+                        <button data="Y" class="letra" (click)="letraClickeada('Y')">Y</button>
+                        <button data="U" class="letra" (click)="letraClickeada('U')">U</button>
+                        <button data="I" class="letra" (click)="letraClickeada('I')">I</button>
+                        <button data="O" class="letra" (click)="letraClickeada('O')">O</button>
+                        <button data="P" class="letra" (click)="letraClickeada('P')">P</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button data="A" class="letra" (click)="letraClickeada('A')">A</button>
+                        <button data="S" class="letra" (click)="letraClickeada('S')">S</button>
+                        <button data="D" class="letra" (click)="letraClickeada('D')">D</button>
+                        <button data="F" class="letra" (click)="letraClickeada('F')">F</button>
+                        <button data="G" class="letra" (click)="letraClickeada('G')">G</button>
+                        <button data="H" class="letra" (click)="letraClickeada('H')">H</button>
+                        <button data="J" class="letra" (click)="letraClickeada('J')">J</button>
+                        <button data="K" class="letra" (click)="letraClickeada('K')">K</button>
+                        <button data="L" class="letra" (click)="letraClickeada('L')">L</button>
+                        <button data="Ñ" class="letra" (click)="letraClickeada('Ñ')">Ñ</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button data="Z" class="letra" (click)="letraClickeada('Z')">Z</button>
+                        <button data="X" class="letra" (click)="letraClickeada('X')">X</button>
+                        <button data="C" class="letra" (click)="letraClickeada('C')">C</button>
+                        <button data="V" class="letra" (click)="letraClickeada('V')">V</button>
+                        <button data="B" class="letra" (click)="letraClickeada('B')">B</button>
+                        <button data="N" class="letra" (click)="letraClickeada('N')">N</button>
+                        <button data="M" class="letra" (click)="letraClickeada('M')">M</button>
+                        
+                        <button class="letraPlus" (click)="limpiarCasilleros()">Borrar</button>
+                        <button class="letraPlus" (click)="probarPalabra()">Probar</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

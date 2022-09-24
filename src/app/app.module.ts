@@ -13,6 +13,9 @@ import { ChatComponent } from './Vistas/chat/chat.component';
 import { SalajuegosComponent } from './Vistas/salajuegos/salajuegos.component';
 import { AhorcadoComponent } from './Juegos/ahorcado/ahorcado.component';
 import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.component';
+import { PreguntadosComponent } from './Juegos/preguntados/preguntados.component';
+import { SrvApiPreguntadosService } from './Servicios/srv-api-preguntados.service';
+import { RelacionadosComponent } from './Juegos/relacionados/relacionados.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +29,15 @@ import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.compo
     SalajuegosComponent,
     AhorcadoComponent,
     MayorOMenorComponent,
+    PreguntadosComponent,
+    RelacionadosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SrvApiPreguntadosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

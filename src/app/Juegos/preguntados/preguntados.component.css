@@ -1,0 +1,110 @@
+
+#container-main-question
+{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 100%;
+}
+
+#main-question
+{
+    justify-content: center;
+    text-align: center;
+}
+
+#link
+{
+    color: white;
+    font-weight: 600;
+}
+
+#error-container
+{
+    text-align: center;
+}
+
+#error-login-message
+{
+    border: 1px solid white;
+    border-radius: 10px;
+
+    color: #d25a5a;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#final-pts
+{
+    margin-top: 1.2rem;
+}
+
+#expositor-preguntas
+{
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 22px;
+    display: flex;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    align-self: center;
+    margin-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 27rem;
+}
+
+#form-questions
+{
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+}
+
+#question-img
+{
+    border-radius: 10px;
+    align-self: center;
+}
+
+#question
+{
+    margin-top: 2rem;
+    padding: 0.5rem;
+    color: white;
+    align-self: center;
+}
+
+#time-left
+{
+    color: red;
+    font-size: 22px;
+}
+
+#final-pts
+{
+    margin-top: 1.2rem;
+}
+
+#label-correct
+{
+    margin-left: 1.5rem;
+    color: green;
+    font-size: 22px;
+}
+
+#label-incorrect
+{
+    margin-left: 1.5rem;
+    color: red;
+    font-size: 22px;
+}
+
+.possible-answer
+{
+    margin-top: 1rem;
+    width: 75%;
+    height: 3rem;
+    border-radius: 10px;
+    color: black;
+    font-size: 19px;
+}

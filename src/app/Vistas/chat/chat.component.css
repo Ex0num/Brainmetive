@@ -47,6 +47,7 @@
     display: list-item;
     justify-content: right;
     align-items: center;
+    overflow-y: auto;
 }
 
 #chat-input
@@ -70,9 +71,17 @@
     text-transform: uppercase;
 }
 
+/* .othersMessage
+{
+    align-self: left;
+    text-align: left;
+    background-color: #aab6b9;
+}
+
 .ownMessage
 {
+    align-self: right;
     text-align: right;
-    background-color: #d25a5a;
-}
+    background-color: #1cb8eb;
+} */
 

@@ -1,0 +1,126 @@
+
+#container-main
+{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 100%;
+}
+
+#main-tittle
+{
+    justify-content: center;
+    text-align: center;
+}
+
+#link
+{
+    color: white;
+    font-weight: 600;
+}
+
+#error-container
+{
+    text-align: center;
+}
+
+#error-login-message
+{
+    border: 1px solid white;
+    border-radius: 10px;
+
+    color: #d25a5a;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#final-pts
+{
+    margin-top: 1.2rem;
+}
+
+#form-game
+{
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.game-img
+{
+    border-radius: 10px;
+    align-self: center;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.game-casillero
+{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    height: 3rem;
+    width: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 25px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+#time-left
+{
+    color: red;
+    font-size: 22px;
+}
+
+#label-correct
+{
+    margin-left: 1.5rem;
+    color: green;
+    font-size: 22px;
+}
+
+#label-incorrect
+{
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    color: red;
+    font-size: 22px;
+}
+
+#game-casillero-container
+{
+    margin-top: 1rem;
+}
+
+#keyboard-container
+{
+    margin-top: 1rem;
+}
+
+.letra
+{
+    width: 3rem;
+    height: 3rem;
+    font-size: 25px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.letraPlus
+{
+    width: min-content;
+    height: 3rem;
+    font-size: 25px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
