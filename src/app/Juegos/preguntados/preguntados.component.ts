@@ -3,6 +3,12 @@ import { Pregunta } from 'src/app/Entidades/pregunta';
 import { SrvApiPreguntadosService } from 'src/app/Servicios/srv-api-preguntados.service';
 import { interval } from 'rxjs';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { app } from 'src/app/app.component';
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+const Encuestas = collection(db, "Encuestas");
 
 @Component({
   selector: 'app-preguntados',
@@ -110,6 +116,8 @@ export class PreguntadosComponent implements OnInit{
     comenzarBtn?.removeAttribute("hidden");
     this.juegoTerminado = true;
     this.mostrarPuntuacionFinal();
+
+    this.guardarPuntuacion();
   }
 
   private mostrarPregunta(preguntaRandomObtenida: Pregunta) 
@@ -200,6 +208,24 @@ export class PreguntadosComponent implements OnInit{
   {
     let puntuacionFinalElement = document.getElementById("final-pts");
     puntuacionFinalElement?.removeAttribute("hidden");
+  }
+
+  private async guardarPuntuacion()
+  {
+    /*------------------- GUARDO AL RANKING -----------------*/
+    let fechaOcurrencia = new Date();
+    let stringDate = fechaOcurrencia.toLocaleDateString();
+    let puntaje = this.puntaje;
+    // Add a new document with a generated id. (TENGO EN "DocRef" la referencia a ese usuario si me hiciese falta)
+    const docRef = await addDoc(collection(db, "Ranking_preguntados"), 
+    {
+      mail: this.usuario,
+      puntuacion: puntaje,
+      fecha: stringDate,
+    });
+
+    console.log("Puntuacion guardada");
+    /*-------------------------------------------------------*/
   }
 
 }

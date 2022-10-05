@@ -1,0 +1,73 @@
+
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark" id="general-container-encuesta">
+            <h1 class="display-4 fst-italic">¡Tu opinión es importante para nosotros!</h1>
+            
+            <p class="lead my-3">Dejanos una reseña/opinión acerca de nuestra humilde y pequeña página, realizada con el <br> 
+              principal objetivo de practicar la cognición mental.<br>
+              Opina de nuestros juegos, nuestra estética, nuestro sistema, ¡De lo que quieras!<br>
+            </p>
+
+        
+            <form id="form" [formGroup]="forma" (ngSubmit)="enviarEncuesta()">
+                <div class="form-control">
+                  <label for="name" id="label-name">Nombre</label>
+                  <input type="text" id="name" placeholder="Ingrese su nombre" formControlName="nombre"/>
+                  <small class="invalid" *ngIf="forma.controls?.['nombre'].errors?.required && forma.controls?.['nombre'].touched">El nombre es requerido</small>
+                </div>
+
+                <div class="form-control">
+                  <label for="name" id="label-name">Apellido</label>
+                  <input type="text" id="name" placeholder="Ingrese su apellido" formControlName="apellido"/>
+                  <small class="invalid" *ngIf="forma.controls?.['apellido'].errors?.required && forma.controls?.['apellido'].touched">El apellido es requerido</small>
+                </div>
+      
+                <div class="form-control">
+                  <label for="age" id="label-age">Número</label>
+                  <input type="number" id="age" placeholder="Ingrese su número telefónico" formControlName="numero"/>
+                  <small class="invalid" *ngIf="forma.controls?.['numero'].errors?.required && forma.controls?.['numero'].touched">El número es inválido</small>
+                </div>
+
+                <div class="form-control">
+                  <label for="age" id="label-age">Edad</label>
+                  <input type="number" id="age" placeholder="Ingrese su edad" formControlName="edad"/>
+                  <small class="invalid" *ngIf="forma.controls?.['edad'].errors?.required && forma.controls?.['edad'].touched">La edad es inválida</small>
+                </div>
+      
+                <div class="form-control">
+                  <label for="role" id="label-role">¿Con qué te sentís mas identificado/a?</label>  
+                  <select name="role" id="role" formControlName="rol">
+                    <option value="Estudiante">Estudiante</option>
+                      <option value="Trabajador/a">Trabajador/a</option>
+                      <option value="Jubilado/a">Jubilado/a</option>
+                      <option value="Desempleado/a">Desempleado/a</option>
+                  </select>
+                  <small class="invalid" *ngIf="forma.controls?.['rol'].errors?.required && forma.controls?.['rol'].touched">El rol es requerido</small>
+                </div>
+      
+                <div class="form-control">
+                  <label>¿Recomendarías Brainmetive a algún conocido?</label>
+                  <label for="recommed-1"><input type="radio"id="recommed-1" name="recommed" checked>Sí</label>
+                  <label for="recommed-2"><input type="radio" id="recommed-2" name="recommed">No</label>
+                  <label for="recommed-3"><input type="radio" id="recommed-3" name="recommed">Tal vez</label>
+                </div>
+      
+                <div class="form-control">
+                    <label>¿Qué cosas crees que se cumplen en Brainmetive? <br>
+                        <small>(Seleccione todas las que considere)</small>
+                    </label>
+  
+                    <label for="inp-1"><input type="checkbox" name="inp">El respeto entre usuarios de la red.</label>
+                    <label for="inp-2"><input type="checkbox" name="inp">El entretenimiento.</label>
+                    <label for="inp-3"><input type="checkbox" name="inp">La practicidad de la cognición mental.</label>
+                </div>
+      
+                <div class="form-control">
+                  <label for="comment"> ¿Algún comentario o sugerencia?</label>
+                  <textarea name="comment" id="comment" placeholder="Ingrese su comentario aquí" formControlName="comentario"></textarea>
+                  <small class="invalid" *ngIf="forma.controls?.['comentario'].errors?.required && forma.controls?.['comentario'].touched">El comentario es requerido</small>
+                </div>
+            
+                <small class="invalid" id="error-enviando" hidden>Hay errores en la encuesta</small>
+                <button type="submit" value="submit" class="btn btn-outline-dark me-2" id="btnEnviar">Enviar</button>   
+            </form>   
+    </div>

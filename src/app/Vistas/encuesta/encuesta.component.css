@@ -1,0 +1,90 @@
+#general-container-encuesta
+{
+    margin-top: 3rem;
+    text-align: center;
+}
+ 
+#label-name
+{
+    margin-top: 0.5rem;
+}
+
+form 
+{
+    border-radius: 10px;
+    background-color: white;
+    width: 50%;
+    margin-top: 3rem;
+    margin-left: 26%;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-control 
+{
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.form-control label 
+{
+    margin-top: 0.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea 
+{
+    border: 1px solid #212529;
+    border-radius: 2px;
+    font-family: inherit;
+    padding: 10px;
+    display: block;
+    width: 95%;
+}
+
+#comment
+{
+    max-width: 90%;
+    width: 90%;
+    max-height: 7rem;
+    height: 7rem;
+    margin-bottom: 0.3rem;
+}
+
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] 
+{
+    display: inline-block;
+    width: auto;
+    margin-right: 0.6rem;
+}
+
+#error-enviando
+{
+    margin-top: -10px;
+}
+
+#btnEnviar 
+{
+    font-family: inherit;
+    font-size: 20px;
+    width: 80%;
+    margin-bottom: 1.3rem;
+}
+
+@media (max-width: 800px) 
+{
+    form 
+    {
+        width: 95%;
+        margin-left: 2%;
+    } 
+}
+
+.invalid
+{
+    color: red;
+    margin-left: 3px;
+}

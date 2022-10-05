@@ -8,7 +8,7 @@ import { HomeComponent } from './Vistas/home/home.component';
 import { QuiensoyComponent } from './Vistas/quiensoy/quiensoy.component';
 import { ErrorComponent } from './Vistas/error/error.component';
 import { RegisterComponent } from './Vistas/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './Vistas/chat/chat.component';
 import { SalajuegosComponent } from './Vistas/salajuegos/salajuegos.component';
 import { AhorcadoComponent } from './Juegos/ahorcado/ahorcado.component';
@@ -16,6 +16,8 @@ import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.compo
 import { PreguntadosComponent } from './Juegos/preguntados/preguntados.component';
 import { SrvApiPreguntadosService } from './Servicios/srv-api-preguntados.service';
 import { RelacionadosComponent } from './Juegos/relacionados/relacionados.component';
+import { EncuestaComponent } from './Vistas/encuesta/encuesta.component';
+import { RankingComponent } from './Vistas/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,14 @@ import { RelacionadosComponent } from './Juegos/relacionados/relacionados.compon
     MayorOMenorComponent,
     PreguntadosComponent,
     RelacionadosComponent,
+    EncuestaComponent,
+    RankingComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [SrvApiPreguntadosService],
   bootstrap: [AppComponent]

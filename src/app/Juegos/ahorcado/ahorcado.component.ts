@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, getFirestore, setDoc } from 'firebase/firestore';
+import { app } from 'src/app/app.component';
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+const Encuestas = collection(db, "Encuestas");
 
 @Component({
   selector: 'app-ahorcado',
@@ -91,7 +97,7 @@ export class AhorcadoComponent
     "INVERSION","NOMBRE","PALABRA","COLECTIVO","CAMION",
     "ZAPATILLA","MEDIAS","PANTALON","CORBATA","CINTURON",
     "COLLAR","JOYA","GORRO","SOMBRERO","BUFANDA",
-    "CORPIÑO","CAMPERA","GOTA","BOLSA","ELECTRICISTA",
+    "CARROZA","CAMPERA","GOTA","BOLSA","ELECTRICISTA",
     "INGENIERIA","TECNICATURA","CALENDARIO","FECHA","DIA",
     "MILENIO","SIGLO","DECADA","AÑO","MES",
   ];
@@ -132,6 +138,8 @@ export class AhorcadoComponent
         {
           this.juegoIniciado = false;
           this.mostrarMensajeTemporal("¡Ganaste, muy bien!");
+
+          this.guardarPuntuacion();
         }
       }
       else if (this.vidas > -1)
@@ -148,6 +156,8 @@ export class AhorcadoComponent
           this.juegoIniciado = false;
           this.mostrarMensajeTemporal("¡Perdiste!");
           this.revelarPalabraRandom();
+
+          this.guardarPuntuacion();
         }
       }
     }
@@ -522,5 +532,24 @@ export class AhorcadoComponent
         }while(this.letrasProbadas.length >= 1);
       }
   }
+
+  private async guardarPuntuacion()
+  {
+    /*------------------- GUARDO AL RANKING -----------------*/
+    let fechaOcurrencia = new Date();
+    let stringDate = fechaOcurrencia.toLocaleDateString();
+    let puntaje = this.vidas + 1;
+    // Add a new document with a generated id. (TENGO EN "DocRef" la referencia a ese usuario si me hiciese falta)
+    const docRef = await addDoc(collection(db, "Ranking_ahorcado"), 
+    {
+      mail: this.usuario,
+      puntuacion: puntaje,
+      fecha: stringDate,
+    });
+
+    console.log("Puntuacion guardada");
+    /*-------------------------------------------------------*/
+  }
+  
 
 }

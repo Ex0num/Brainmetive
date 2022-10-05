@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { app } from 'src/app/app.component';
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+const Encuestas = collection(db, "Encuestas");
 
 @Component({
   selector: 'app-mayor-o-menor',
@@ -111,13 +117,14 @@ export class MayorOMenorComponent
       }
       else
       {
-        if (this.puntaje > 0) {this.puntaje = this.puntaje - 100;}
+        if (this.puntaje > 0) {this.puntaje = this.puntaje - 1;}
 
         this.vidas--;
         
         if (this.vidas <= 0)
         {
           this.juegoIniciado = false;
+          this.guardarPuntuacion()
         }
 
         this.mostrarMensajeTemporal("¡Mal!");
@@ -131,6 +138,7 @@ export class MayorOMenorComponent
       if (this.numerosMostrados.length == 10)
       {
         this.todosLosNumerosRevelados = true;
+        this.guardarPuntuacion();
       }
     }
     else
@@ -162,13 +170,14 @@ export class MayorOMenorComponent
       }
       else
       {
-        if (this.puntaje > 0) {this.puntaje = this.puntaje - 100;}
+        if (this.puntaje > 0) {this.puntaje = this.puntaje - 1;}
 
         this.vidas--;
         
         if (this.vidas <= 0)
         {
           this.juegoIniciado = false;
+          this.guardarPuntuacion();
         }
 
         this.mostrarMensajeTemporal("¡Mal!");
@@ -182,6 +191,7 @@ export class MayorOMenorComponent
       if (this.numerosMostrados.length == 10)
       {
         this.todosLosNumerosRevelados = true;
+        this.guardarPuntuacion();
       }
     }
     else
@@ -525,6 +535,24 @@ export class MayorOMenorComponent
       this.mensajeTemporal = "";
       mensajeTemporalElem?.setAttribute("hidden","true");
     }, 2500)
+  }
+
+  private async guardarPuntuacion()
+  {
+    /*------------------- GUARDO AL RANKING -----------------*/
+    let fechaOcurrencia = new Date();
+    let stringDate = fechaOcurrencia.toLocaleDateString();
+    let puntaje = this.puntaje;
+    // Add a new document with a generated id. (TENGO EN "DocRef" la referencia a ese usuario si me hiciese falta)
+    const docRef = await addDoc(collection(db, "Ranking_mayoromenor"), 
+    {
+      mail: this.usuario,
+      puntuacion: puntaje,
+      fecha: stringDate,
+    });
+
+    console.log("Puntuacion guardada");
+    /*-------------------------------------------------------*/
   }
 
 }

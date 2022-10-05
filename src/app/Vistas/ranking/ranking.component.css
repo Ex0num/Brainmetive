@@ -1,0 +1,49 @@
+#contenedor-rankings
+{
+    width: 95%;
+    margin-left: 3%;
+    margin-top: 3rem;
+}
+
+h3
+{
+    text-align: center;
+    padding: 0.3rem;
+}
+
+p
+{
+    margin-top: 0.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#main-row1, #main-row2, #main-row3, #main-row4
+{
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.col
+{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#card-1er-puesto-ahorcado, #card-1er-puesto-mayoromenor, #card-1er-puesto-preguntados, #card-1er-puesto-relaciona2
+{
+    background-color: rgb(217, 196, 60);
+    width: 90%;
+}
+
+#card-2do-puesto-ahorcado, #card-2do-puesto-mayoromenor, #card-2do-puesto-preguntados, #card-2do-puesto-relaciona2
+{
+    background-color: rgb(145, 145, 145);
+    width: 90%;
+}
+
+#card-3er-puesto-ahorcado, #card-3er-puesto-mayoromenor, #card-3er-puesto-preguntados, #card-3er-puesto-relaciona2
+{
+    background-color: rgb(218, 129, 40);
+    width: 90%;
+}
