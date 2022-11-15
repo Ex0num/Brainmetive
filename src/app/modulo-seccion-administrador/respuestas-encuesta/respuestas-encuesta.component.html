@@ -1,0 +1,19 @@
+<div class="p-4 p-md-5 mb-4 rounded" id="contenedor-absoluto" *ngIf="mailShowed == 'administrador@gmail.com'">
+    <div class="row">
+        
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            
+            <label id="lbl-listado-encuestas">Listado de encuestas</label>
+            <ul id="listado-encuestas">
+                <li class="item-encuesta" *ngFor="let encuesta of arrayEncuestasLeidas">
+                    <label>{{encuesta.nombre}} {{encuesta.apellido}}</label><br>
+                    <label>{{encuesta.edad}} Años</label><br>
+                    <label>Num: {{encuesta.numero}}</label><br>
+                    <label>Rol: {{encuesta.rol}}</label><br>
+                    <label>Comentario: {{encuesta.comentario}}</label>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

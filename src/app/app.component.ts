@@ -36,6 +36,7 @@ export class AppComponent
 {
   title = 'Brainmetive';
   mailShowed:any = "UserExample@gmail.com";
+  isAdmin:boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute)
   {
@@ -51,6 +52,7 @@ export class AppComponent
 
         //Si el usuario esta logeado
         //..
+        this.isAdmin = true;
 
         this.mailShowed = user.email;
         let btnLogin = document.getElementById("btnLogin");
@@ -63,6 +65,7 @@ export class AppComponent
         btnLogOut?.removeAttribute("hidden");
 
         console.log("LOGEADO!!!");
+        console.log(this.mailShowed);
 
         let mailShower = document.getElementById("userMail-loged");
         mailShower?.removeAttribute("hidden");

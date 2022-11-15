@@ -6,8 +6,8 @@ import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { Log } from 'src/app/Entidades/log';
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-const Logs = collection(db, "Logs");
+export const db = getFirestore(app);
+export const Logs = collection(db, "Logs");
 
 const now = new Date();
 

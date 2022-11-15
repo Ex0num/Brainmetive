@@ -1,9 +1,11 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OnlyAdminGuard } from './Guardianes/only-admin.guard';
 import { AhorcadoComponent } from './Juegos/ahorcado/ahorcado.component';
 import { MayorOMenorComponent } from './Juegos/mayor-o-menor/mayor-o-menor.component';
 import { PreguntadosComponent } from './Juegos/preguntados/preguntados.component';
 import { RelacionadosComponent } from './Juegos/relacionados/relacionados.component';
+import { RespuestasEncuestaComponent } from './modulo-seccion-administrador/respuestas-encuesta/respuestas-encuesta.component';
 import { ChatComponent } from './Vistas/chat/chat.component';
 import { EncuestaComponent } from './Vistas/encuesta/encuesta.component';
 import { ErrorComponent } from './Vistas/error/error.component';
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path: 'juegos/relacionados',component:RelacionadosComponent},
   {path: 'encuesta',component:EncuestaComponent},
   {path: 'ranking',component:RankingComponent},
+  {path: 'rtasencuesta',component:RespuestasEncuestaComponent, canActivate: [OnlyAdminGuard], loadChildren: () => import('./modulo-seccion-administrador/modulo-seccion-administrador.module').then(m => m.ModuloSeccionAdministradorModule)},
   {path: '', component:HomeComponent},
   {path: '**',component:ErrorComponent}
 ];
